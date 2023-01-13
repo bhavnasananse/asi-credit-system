@@ -1,0 +1,40 @@
+<div fxLayoutAlign="center">
+    <mat-card>
+      <form class="example-form" [formGroup]="fgmanager">
+        <div fxLayoutAlign="end center">
+          <button mat-icon-button (click)="cancel()">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
+
+        <div fxLayout="row">
+          <div>
+            <b fxLayoutAlign="center center"style="text-transform: uppercase;"><img src="../../../assets/images/user.png">{{data.row.c_name}}</b>
+            <p> Requested Amount : {{data.row.require_credit}}</p>
+          </div>
+          <p style="border-right: silver solid 1px;"></p>&nbsp;&nbsp;
+          <div>
+            <p>{{data.row.advisor_name}}</p>
+            <p>{{data.row.due_date | date: 'dd MMMM yyyy'}}</p>
+          </div>
+        </div> &nbsp;&nbsp;
+        
+
+        <mat-form-field class="example-full-width" fxLayout="column">
+          <input matInput placeholder="Requested Amount" formControlName="require_credit">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" fxLayout="column">
+            <input matInput placeholder="Approve Amount" formControlName="approve_amount">
+        </mat-form-field>    
+        <mat-form-field class="example-full-width" fxLayout="column">
+            <input matInput placeholder="Comment Here" formControlName="approver_comment">
+        </mat-form-field>  
+
+      </form>
+      <div fxLayoutAlign="end end" fxLayoutGap="5px">
+          <button mat-raised-button color="primary"  *ngIf = "!flag" (click)="approve()">Approve</button>
+          <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
+      </div>
+  </mat-card>
+</div>    
+ 

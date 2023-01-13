@@ -1,0 +1,53 @@
+<div class="container">
+    <div fxLayoutAlign="start start">
+        <img src="assets/images/imgpsh_fullsize_anim.png"> 
+       <!-- <span routerLink='/'>APPLICATION SQUARE INFOTECH</span> -->
+    </div>    
+    <div class="header">
+            <h3>Welcome</h3>
+            <p>To Application Square Credit System</p>
+    </div>                
+        <div class="form1" fxLayoutAlign = "center center">
+            <mat-card class="example-card" fxFlex="400px">
+                <h4 fxLayoutAlign="center">Sign In With</h4>
+                <div>
+                    <form [formGroup]="fglogin">
+                        <mat-form-field appearance="outline" class="example-full-width" fxLayout="column">
+                            <input matInput placeholder="Username" required formControlName="username">
+                            <mat-icon matPrefix>email</mat-icon>
+                            <mat-error>username is required here!</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field  appearance="outline" fxLayout="column">
+                            <input matInput type="password" placeholder="Password" required formControlName="password">
+                                <mat-icon matPrefix>lock_open</mat-icon>
+                                <mat-error>password is required with min length 8!</mat-error>
+                        </mat-form-field>
+                        <mat-checkbox color="primary">Remember me!</mat-checkbox>    
+                    </form>
+                </div> 
+                <div fxLayoutAlign="center center">
+                    <button mat-raised-button color="primary" (click)="login()" [disabled]="fglogin.invalid">sign in</button>
+                </div>              
+            </mat-card>
+        </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>       
+    <br>       
+    <br>
+    <br>       
+    <div class="footer" fxLayoutAlign="center">
+        <p>© 2020 <a href="#" target="blank" style="color: #5e72e4; text-decoration-line: none;">Application Square Infotech</a></p>
+    </div>  
+</div>
+

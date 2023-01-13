@@ -1,0 +1,19 @@
+/* mat-icon{
+    border-radius: 70px;
+    padding : 10px;
+    background-color: rgb(255, 17, 17);
+    color: white;
+} */
+/* expample-cls > data.row.c_name {
+  } */
+
+  .example-card{
+      width: 25%;
+    background-color: white;
+  }
+  mat-card{
+      background-color: whitesmoke;
+  }
+  .img-example > img{
+    border-radius: 100px;
+  }

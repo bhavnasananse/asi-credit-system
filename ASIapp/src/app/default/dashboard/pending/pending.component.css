@@ -1,0 +1,24 @@
+mat-form-field{
+    margin: 5px;
+}
+table {
+  width: 100%;
+}
+.example-card{
+  background-color: whitesmoke;
+}
+.head-example{
+  margin: 10% 20px 20px 20px;
+}
+.example-card {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  border-radius: 2%;
+  border: brown 2px solid;
+  width: 300px;
+}
+mat-icon{
+  border-radius: 70px;
+  padding : 10px;
+  background-color: rgb(255, 17, 17);
+  color: white;
+}

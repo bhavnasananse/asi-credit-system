@@ -1,0 +1,29 @@
+<div fxLayoutAlign="center center">
+    <mat-card>
+        <div fxlayoutAlign="center center">
+            <form [formGroup] = "fgadd_payment">
+                <div fxLayoutAlign="end center">
+                    <button mat-icon-button (click)="cancel()">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                </div>
+                <mat-form-field fxLayout="column">
+                    <input matInput formControlName="c_name">
+                </mat-form-field>
+                
+                <mat-form-field fxLayout="column">
+                    <input matInput placeholder="Amount" required formControlName="pay_amount">
+                </mat-form-field>
+                
+                <!-- <mat-form-field fxLayout="column">
+                    <input matInput placeholder="comment here" required formControlName="advisor_comment">
+                </mat-form-field> -->
+                
+            </form>
+        </div>
+        <div fxLayoutGap="5px" fxLayoutAlign=end center>
+            <button mat-raised-button color="primary" [disabled]=fgadd_payment.invalid (click)="add_payment()">Add Payment</button>
+            <button mat-raised-button color="primary" (click)="cancel()">Close</button>
+        </div>
+    </mat-card>
+</div>

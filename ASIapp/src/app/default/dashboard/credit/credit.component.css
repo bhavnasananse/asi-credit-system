@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+}  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  mat-card{
+    margin: 10% 20px 20px 20px;  
+  }
+/* button:active {
+  background-color:whitesmoke;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+} */
+.example-btn{
+  margin: 10px 0px 0px 10px;
+}
+.example-btn > button{
+  color: blueviolet;
+}

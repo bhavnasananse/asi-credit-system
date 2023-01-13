@@ -1,0 +1,29 @@
+<div class="form-2">
+    <div fxLayoutAlign="center">
+    <mat-card>
+      <form class="example-form" [formGroup]="fgaddcustomer">
+        <div fxLayoutAlign="end center">
+          <button mat-icon-button (click)="cancel()">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Customer_Type" formControlName="c_type">
+          </mat-form-field>
+          <!-- <br>
+          <mat-checkbox>Check me!</mat-checkbox>
+          <mat-checkbox>Check me!</mat-checkbox>
+          <mat-checkbox>Check me!</mat-checkbox>
+          <mat-checkbox>Check me!</mat-checkbox>
+          <mat-checkbox>Check me!</mat-checkbox>
+          <mat-checkbox>Check me!</mat-checkbox> -->
+      </form>
+      <button mat-raised-button color="primary" *ngIf = "flag"(click)="save()">Save</button>
+      <button mat-raised-button color="primary" *ngIf = "!flag" (click)="update()">Update</button>
+      <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
+      
+    </mat-card>
+</div>    
+
+</div>
+

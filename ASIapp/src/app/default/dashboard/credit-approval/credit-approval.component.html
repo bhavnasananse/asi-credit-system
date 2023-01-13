@@ -1,0 +1,132 @@
+<div class="container">
+    <div class="example-btn" fxLayoutGap="10px">
+        <button mat-raised-button color="basic" (click)="get_credit_approval()">Credit Approval</button>
+        <button mat-raised-button color="basic" (click)="get_verified()">Verified</button>
+    </div>
+    <div *ngIf="state =='default'">
+        <mat-card>            
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+              </mat-form-field>
+              
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort>
+              
+                  <ng-container matColumnDef="c_name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+                    <td mat-cell *matCellDef="let row"> {{row.c_name}} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="gate_pass_id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Gate Pass Id </th>
+                    <td mat-cell *matCellDef="let row"> {{row.gate_pass_id}} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="approve_amount">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Approved </th>
+                    <td mat-cell *matCellDef="let row"> {{row.approve_amount}} </td>
+                  </ng-container>           
+                  
+                  <ng-container matColumnDef="due_date">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Due Date </th>
+                    <td mat-cell *matCellDef="let row"> {{row.due_date | date: 'yyyy/MM/dd'}} </td>
+                  </ng-container>              
+    
+                  <ng-container matColumnDef="advisor_name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Advisor </th>
+                    <td mat-cell *matCellDef="let row"> {{row.advisor_name}}</td>
+                  </ng-container>
+    
+                  <ng-container matColumnDef="approver_name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Approve By</th>
+                    <td mat-cell *matCellDef="let row"> {{row.approver_name}} </td>
+                  </ng-container>   
+                  
+                  <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                    <td mat-cell *matCellDef="let row"> <button mat-icon-button [matMenuTriggerFor]="menu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+                          <mat-menu #menu="matMenu">                           
+                            <button mat-menu-item>
+                              <!-- <mat-icon color="primary">edit</mat-icon> -->
+                                <button mat-button>Download Get Pass</button>
+                            </button>                            
+                          </mat-menu>
+                        </td>
+                  </ng-container>
+    
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                  </tr>
+                </table>
+                </div>
+              
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </mat-card>
+    </div>
+
+    <div  *ngIf="state =='!default'">
+      <mat-card>            
+          <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+            
+            <div class="mat-elevation-z8">
+              <table mat-table [dataSource]="dataSource" matSort>
+            
+                <ng-container matColumnDef="c_name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+                  <td mat-cell *matCellDef="let row"> {{row.c_name}} </td>
+                </ng-container>
+            
+                <ng-container matColumnDef="gate_pass_id">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Gate Pass Id </th>
+                  <td mat-cell *matCellDef="let row"> {{row.gate_pass_id}} </td>
+                </ng-container>
+            
+                <ng-container matColumnDef="approve_amount">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Approved </th>
+                  <td mat-cell *matCellDef="let row"> {{row.approve_amount}} </td>
+                </ng-container>           
+                
+                <ng-container matColumnDef="due_date">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Due Date </th>
+                  <td mat-cell *matCellDef="let row"> {{row.due_date | date: 'yyyy/MM/dd'}} </td>
+                </ng-container>              
+  
+                <ng-container matColumnDef="advisor_name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Advisor </th>
+                  <td mat-cell *matCellDef="let row"> {{row.advisor_name}}</td>
+                </ng-container>
+  
+                <ng-container matColumnDef="approver_name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Approve By</th>
+                  <td mat-cell *matCellDef="let row"> {{row.approver_name}} </td>
+                </ng-container>   
+                
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                  <td mat-cell *matCellDef="let row"> <button mat-icon-button [matMenuTriggerFor]="menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                        <mat-menu #menu="matMenu">                           
+                          <button mat-menu-item>
+                            <!-- <mat-icon color="primary">edit</mat-icon> -->
+                              <button mat-button>Download Get Pass</button>
+                          </button>                            
+                        </mat-menu>
+                      </td>
+                </ng-container>
+  
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                </tr>
+              </table>
+              </div>
+            
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </mat-card>
+  </div>
+</div>
+

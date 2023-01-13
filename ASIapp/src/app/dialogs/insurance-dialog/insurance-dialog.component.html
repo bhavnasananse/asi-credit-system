@@ -1,0 +1,21 @@
+<div>
+    <mat-card>
+        <form [formGroup]="fginsurance">
+            <div fxLayoutAlign="end center">
+                <button mat-icon-button (click)="cancel()">
+                  <mat-icon>clear</mat-icon>
+                </button>
+              </div>
+            <div class="example-container">
+                <mat-form-field>
+                    <input matInput placeholder="enter company name" formControlName="company_name">
+                </mat-form-field>
+            </div>
+            <div fxLayoutGap="5px">
+                <button mat-raised-button color="primary" *ngIf="flag" [disabled]= "fginsurance.invalid" (click)="save()">save</button>
+                <button mat-raised-button color="primary" *ngIf="!flag"(click)="update()">update</button>
+                <button mat-raised-button color="primary" (click)="cancel()">cancel</button>             
+            </div>
+        </form>
+    </mat-card>
+</div>

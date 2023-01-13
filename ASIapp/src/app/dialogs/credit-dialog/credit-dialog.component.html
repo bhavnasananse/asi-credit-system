@@ -1,0 +1,64 @@
+    <div fxLayoutAlign="center center">
+        <mat-card>
+            <form class="example-form" [formGroup]="fgCredit">
+                <div fxLayoutAlign="end center">
+                    <button mat-icon-button (click)="cancel()">
+                      <mat-icon>clear</mat-icon>
+                    </button>
+                  </div>
+                <!-- <mat-form-field fxLayout="column">
+                    <mat-label>Select Type</mat-label>
+                        <mat-select placeholder="Customer Type List" required formControlName="c_id">
+                            <mat-option>Select</mat-option>
+                            <mat-option value="1">Individual</mat-option>
+                            <mat-option value="3">Corporate</mat-option>
+                        </mat-select>
+                </mat-form-field> -->
+                <mat-form-field  fxLayout="column">
+                    <mat-select placeholder="Customer Type List" required formControlName="c_id">
+                        <mat-option [value]="costom.c_id" *ngFor ="let costom of custs">{{costom.c_type}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                
+                <mat-form-field  fxLayout="column">
+                    <mat-select placeholder="Customer Name List" required formControlName="cl_id">
+                        <mat-option [value]="cst.cl_id" *ngFor ="let cst of cust">{{cst.c_name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field fxLayout="column">
+                    <input matInput placeholder="Car No" required formControlName="car_no">
+                </mat-form-field> 
+                <mat-form-field>
+                    <input matInput placeholder="Requested Amount" required formControlName="require_credit">
+                </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;                            
+                <mat-form-field>
+                    <input matInput placeholder="Invoice No" required formControlName="invoice_no">
+                </mat-form-field><br>
+                <mat-form-field>
+                    <input matInput placeholder="Invoice Amount" required formControlName="invoice_amount">
+                </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp; 
+                <mat-form-field>
+                    <mat-label>Select approver</mat-label>
+                        <mat-select formControlName="approver_name">
+                            <mat-option *ngFor="let advisor of advisor" [value]="advisor.name">{{advisor.name}}
+                        </mat-option>
+                        </mat-select>
+                </mat-form-field>                
+                <mat-form-field fxLayout="row">
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="due_date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>                                  
+                <mat-form-field fxLayout="column">
+                    <input matInput placeholder="Comment" formControlName="comment">
+                </mat-form-field>                
+              </form>
+              <div fxLayoutAlign= end center fxLayout="row" fxLayoutGap="5px">
+                    <button mat-raised-button color="primary" *ngIf = "flag" (click)="save()" [disabled]="fgCredit.invalid">Save</button>
+                    <button mat-raised-button color="primary"  *ngIf = "!flag"(click)="update()">Update</button>
+                    <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
+             </div>
+            </mat-card>
+        </div>  
+
+       

@@ -1,0 +1,89 @@
+<div class="container">
+    <mat-toolbar style="background-color: blueviolet;">                          
+        <mat-toolbar-row>         
+            <button mat-raised-button routerLink="/dashboard">Dashboard</button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div class="mat-example">
+        <div fxLayout="row wrap" fxLayoutGap="5px">
+          <mat-card class="example-card">
+            <div>
+              <div fxFlex="row">                   
+                <h4>TOTAL RECOVERY DONE {{obj && obj[0]?.total2}}</h4> 
+              </div>
+              <div fxLayoutAlign="end center">
+                <mat-icon matSuffix>account_balance</mat-icon>
+              </div>
+            </div>
+          </mat-card>
+          <mat-card class="example-card">
+            <div>
+              <div fxFlex="row">                   
+                <h4>TOTAL CREDIT GIVEN {{obj && obj[0]?.total1}}</h4>
+              </div>
+              <div fxLayoutAlign="end center">
+                <mat-icon style="padding: 10px; background-color: rgb(255, 136, 0); color: white;">money</mat-icon>
+              </div>
+            </div>
+          </mat-card>
+          <mat-card class="example-card">
+            <div>
+              <div fxFlex="row">                             
+                <h4>TOTAL BALANCE OUTSTANDING {{obj && obj[0]?.total}}</h4>  
+              </div>
+              <div fxLayoutAlign="end center">
+                <mat-icon style="padding: 10px; background-color: yellow; color: white;">shopping_basket</mat-icon>
+              </div> 
+            </div>
+          </mat-card>
+        </div>                
+      </div>
+  <div>
+    <mat-card>
+    <label>Credit List</label>
+    <br>
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>  
+    
+        <ng-container matColumnDef="c_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.c_name}} </td>
+        </ng-container>
+ 
+        <ng-container matColumnDef="pay_amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Pay Amount </th>
+          <td mat-cell *matCellDef="let row"> {{row.pay_amount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="approve_amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>approved_amount </th>
+          <td mat-cell *matCellDef="let row"> {{row.approve_amount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="balance_amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Credit Balance </th>
+          <td mat-cell *matCellDef="let row"> {{row.balance_amount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="advisor_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Advisor Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.advisor_name}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="approver_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> approver name</th>
+          <td mat-cell *matCellDef="let row"> {{row.approver_name}} </td>
+        </ng-container>    
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>  
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+    </mat-card>
+  </div>
+</div>

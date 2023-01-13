@@ -1,0 +1,173 @@
+<div class="example-btn" fxLayoutGap="5px">
+    <button mat-raised-button color="basic"(click)="approval()">Approval List</button>
+    <button mat-raised-button color="basic"(click)="approved()">Approved</button>
+    <button mat-raised-button color="basic" routerLink="/dashboard/manager-special-approval">Special-Approval</button>
+    <!-- <button mat-raised-button color="basic" (click)="specially_approved()">Special Approval</button> -->
+</div>
+<div *ngIf="state=='default'">
+    <mat-card>
+      <!-- <h3>Pending List</h3> -->
+      <div fxLayoutAlign = end center><button mat-raised-button style="background-color: blueviolet; color:white" (click)="opendialog1()">
+          Add Credit
+        </button>
+      </div>
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>  
+        
+        <ng-container matColumnDef="c_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.c_name}} </td>
+        </ng-container>
+     
+        <ng-container matColumnDef="require_credit">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>require_credit </th>
+          <td mat-cell *matCellDef="let row"> {{row.require_credit}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="approve_amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>approved_amount </th>
+          <td mat-cell *matCellDef="let row"> {{row.approve_amount}}</td>
+        </ng-container>
+
+         <ng-container matColumnDef="balance_amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Credit Balance </th>
+          <td mat-cell *matCellDef="let row"> {{row.balance_amount}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="advisor_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Advisor Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.advisor_name}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="advisor_comment">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> advisor comment</th>
+          <td mat-cell *matCellDef="let row"> {{row.advisor_comment}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="approver_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> approver name</th>
+            <td mat-cell *matCellDef="let row"> {{row.approver_name}} </td>
+          </ng-container>
+
+        <ng-container matColumnDef="comment">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>approver comment</th>
+          <td mat-cell *matCellDef="let row"> {{row.comment}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                      <mat-icon color="primary" matPrefix>done_all</mat-icon>
+                      <button mat-icon-button (click)="opendialog(row,'approve')">Approve</button>
+                  </button>
+                 <button mat-menu-item>
+                  <mat-icon color="primary" matPrefix>arrow_forward</mat-icon>
+                      <button mat-icon-button (click)="forword(row)">Forward</button>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon color="warn" matPrefix>close</mat-icon>
+                      <button mat-icon-button (click)="reject(row)">Reject</button>
+                  </button>
+                  <!-- <button mat-menu-item> -->
+                    <!-- <mat-icon>delete</mat-icon> -->
+                      <!-- <button mat-icon-button (click)="set_default()">Set Default</button>
+                  </button> -->
+                </mat-menu>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>  
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </mat-card>
+  </div>
+
+  <div *ngIf="state=='approve'">
+    <mat-card>
+      <!-- <div fxLayoutAlign = end center><button mat-raised-button color="primary" (click)="opendialog1()">
+          Add Credit
+        </button>
+      </div> -->
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>  
+        
+        <ng-container matColumnDef="c_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.c_name}} </td>
+        </ng-container>
+     
+        <ng-container matColumnDef="require_credit">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>require_credit </th>
+          <td mat-cell *matCellDef="let row"> {{row.require_credit}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="approve_amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>approved_amount </th>
+          <td mat-cell *matCellDef="let row"> {{row.approve_amount}}</td>
+        </ng-container>
+
+         <ng-container matColumnDef="balance_amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Credit Balance </th>
+          <td mat-cell *matCellDef="let row"> {{row.balance_amount}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="advisor_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Advisor Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.advisor_name}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="advisor_comment">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> advisor comment</th>
+          <td mat-cell *matCellDef="let row"> {{row.advisor_comment}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="approver_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> approver name</th>
+            <td mat-cell *matCellDef="let row"> {{row.approver_name}} </td>
+          </ng-container>
+
+        <ng-container matColumnDef="comment">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>approver comment</th>
+          <td mat-cell *matCellDef="let row"> {{row.comment}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                    <mat-icon color="primary">credit_card</mat-icon>
+                      <button mat-button (click)="opendialog2(row)">Add-Payment</button>
+                  </button>                
+                </mat-menu>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>  
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </mat-card>
+  </div>
+
+
+

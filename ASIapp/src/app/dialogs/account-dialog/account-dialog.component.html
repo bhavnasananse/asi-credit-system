@@ -1,0 +1,46 @@
+<div>
+    <mat-card class="example-card">
+        <form [formGroup]="fgaccount">
+            <div fxLayoutAlign="end center">
+                <button mat-icon-button (click)="cancel()">
+                  <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+            <mat-form-field  fxLayout="column">
+                <input matInput formControlName="cl_id">
+            </mat-form-field>
+            <span style="color: red;">Balance Amount : {{data.row.balance_amount}}</span>
+            <mat-form-field  fxLayout="column">
+                <input matInput placeholder="Amount" formControlName="pay_amount">
+            </mat-form-field>
+
+            <mat-form-field  fxLayout="column">
+                <mat-select placeholder="Payment Mode List" formControlName="p_id">
+                    <mat-option [value]="payment.p_id" *ngFor ="let payment of payments">{{payment.mode_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field fxLayout="column">
+                <input matInput placeholder="Resite No" required formControlName="resite_no">
+            </mat-form-field>
+
+            <mat-form-field fxLayout="row">
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>   
+
+            <mat-form-field fxLayout="column">
+                <input matInput placeholder="short payment" formControlName="short_payment">
+            </mat-form-field>
+
+            <mat-form-field fxLayout="column">
+                <input matInput placeholder="Comment" formControlName="comment">
+            </mat-form-field>             
+        </form>
+        <div fxLayoutGap="5px" fxLayoutAlign="end center">
+            <button mat-raised-button color="primary" (click)="add_payment()">Add Payment</button>
+            <button mat-raised-button color="primary" (click)="cancel()">Close</button>
+        </div>
+    </mat-card>
+</div>

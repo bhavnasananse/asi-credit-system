@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="example-btn" fxLayoutGap="5px">
+        <button mat-raised-button color="basic" (click)="reloadTable()">todays followup</button>
+        <button mat-raised-button color="basic"(click)="follow_up()">followup</button>
+    </div>
+    <div *ngIf="state =='default'">
+      <mat-card>
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+          
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+          
+              <ng-container matColumnDef="c_name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+                <td mat-cell *matCellDef="let row"> {{row.c_name}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Follow Up </th>
+                <td mat-cell *matCellDef="let row"> {{row.date | date: 'yyyy/MM/dd'}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="comment">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Comment </th>
+                <td mat-cell *matCellDef="let row"> {{row.comment}} </td>
+              </ng-container>        
+              
+              <ng-container matColumnDef="next_date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Next Follow Up </th>
+                <td mat-cell *matCellDef="let row"> {{row.next_date | date: 'yyyy/MM/dd'}} </td>
+              </ng-container>              
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+              </tr>
+            </table>
+          
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>        
+      </mat-card>
+    </div>
+</div>
+  <div *ngIf="state =='!default'">
+    <mat-card>
+      <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+        
+      <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort>
+        
+            <ng-container matColumnDef="c_name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+              <td mat-cell *matCellDef="let row"> {{row.c_name}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Follow Up </th>
+              <td mat-cell *matCellDef="let row"> {{row.date | date: 'yyyy/MM/dd'}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="comment">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Comment </th>
+              <td mat-cell *matCellDef="let row"> {{row.comment}} </td>
+            </ng-container>        
+            
+            <ng-container matColumnDef="next_date">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Next Follow Up </th>
+              <td mat-cell *matCellDef="let row"> {{row.next_date | date: 'yyyy/MM/dd'}} </td>
+            </ng-container>              
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+            </tr>
+          </table>
+        
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+      
+  </mat-card>
+  </div>
+

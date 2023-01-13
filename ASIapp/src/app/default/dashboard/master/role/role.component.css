@@ -1,0 +1,15 @@
+table {
+  width: 100%;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+  button{
+    margin: 5px;
+  }  
+ mat-card{
+  margin: 10% 20px 20px 20px;
+ }
+
+  

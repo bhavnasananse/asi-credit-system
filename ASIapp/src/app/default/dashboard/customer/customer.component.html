@@ -1,0 +1,136 @@
+<!-- <div class="container"> -->
+  <div class="example-btn" fxLayoutGap="5px">
+    <button mat-raised-button color="basic"(click)="default()">Customer</button>
+    <button mat-raised-button color="basic"(click)="default1()">defaulter</button>
+  </div>
+
+  <div *ngIf= "state=='default'">
+    <mat-card>
+      <div fxLayoutAlign = end center><button mat-raised-button style="background-color: blueviolet; color:white" (click)="opendialog('','add')">
+        Add Customer</button>
+      </div>            
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+          </mat-form-field>
+          
+          <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+          
+              <ng-container matColumnDef="c_name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+                <td mat-cell *matCellDef="let row"> {{row.c_name}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="credit_amount">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Credit Amount  </th>
+                <td mat-cell *matCellDef="let row"> {{row.credit_amount}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="credit_days">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Credit Days </th>
+                <td mat-cell *matCellDef="let row"> {{row.credit_days}} </td>
+              </ng-container>           
+              
+              <ng-container matColumnDef="car_no">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Car No </th>
+                <td mat-cell *matCellDef="let row"> {{row.car_no}} </td>
+              </ng-container>              
+
+              <ng-container matColumnDef="contact_no">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Contact No </th>
+                <td mat-cell *matCellDef="let row"> {{row.contact_no}}</td>
+              </ng-container>              
+              
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                <td mat-cell *matCellDef="let row"> <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                      <mat-menu #menu="matMenu">                           
+                          <button mat-menu-item>
+                            <mat-icon color="primary" matPrefix>edit</mat-icon>
+                               <button mat-icon-button (click)="opendialog(row,'edit')">Edit</button>
+                           </button>
+                           <button mat-menu-item>
+                             <mat-icon color="warn" matPrefix>delete</mat-icon>
+                               <button mat-icon-button (click)="delete(row)">Delete</button>
+                           </button>
+                           <button mat-menu-item>
+                             <mat-icon color="primary" matPrefix>details</mat-icon>
+                             <button mat-icon-button (click)="opendialog1(row)">Details</button>
+                           </button>
+                           <button mat-menu-item>
+                             <mat-icon color="primary" matPrefix>radio_button_checked</mat-icon>
+                               <button mat-button (click)="set_default(row)">Set-Default</button>
+                           </button>                                       
+                      </mat-menu>
+                    </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+              </tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            </div>              
+    </mat-card>
+</div>
+<!-- </div> -->
+
+<div *ngIf= "state=='!default'">
+  <mat-card>
+    <p>Customer</p>
+      <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+  
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>        
+        
+      <ng-container matColumnDef="c_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.c_name}} </td>
+      </ng-container>
+   
+      <ng-container matColumnDef="credit_amount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Credit Amount </th>
+        <td mat-cell *matCellDef="let row"> {{row.credit_amount}}</td>
+      </ng-container>      
+
+      <ng-container matColumnDef="credit_days">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Credit Days </th>
+        <td mat-cell *matCellDef="let row"> {{row.credit_days}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="car_no">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Car No</th>
+        <td mat-cell *matCellDef="let row"> {{row.car_no}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="contact_no">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Contact No</th>
+        <td mat-cell *matCellDef="let row"> {{row.contact_no}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                  <mat-icon color="primary" matPreffix>radio_button_unchecked</mat-icon>
+                    <button mat-button (click)="set_non_default(row)">Set Non-Default</button>
+                </button>
+              </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"> </tr>
+    </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</mat-card>
+</div>

@@ -1,0 +1,62 @@
+<div fxLayoutAlign="center center">
+    <mat-card>
+        <div fxlayoutAlign="center center">
+        <form [formGroup] = "fgcustomer">
+            <div fxLayoutAlign="end center">
+                <button mat-icon-button (click)="cancel()">
+                  <mat-icon>clear</mat-icon>
+                </button>
+              </div>
+                <!-- <mat-form-field fxLayout="column">
+                    <mat-select placeholder="Select Customer" required formControlName="c_id">
+                        <mat-option value="1">Individual</mat-option>
+                        <mat-option value="3">Corporate</mat-option>
+                    </mat-select>
+                </mat-form-field> -->
+                <mat-form-field  fxLayout="column">
+                    <mat-select placeholder="Customer Type List" required formControlName="c_id">
+                        <mat-option [value]="costom.c_id" *ngFor ="let costom of custs">{{costom.c_type}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field fxLayout="column">
+                    <input matInput placeholder="Customer Name" required formControlName="c_name">
+                </mat-form-field>
+                <mat-form-field fxLayout="column">
+                    <input matInput placeholder="MH 15 DN 0000" required formControlName="car_no">
+                </mat-form-field> 
+                <mat-form-field>
+                    <input matInput placeholder="Contact No" formControlName="contact_no">
+                        <mat-error>must contain 10 digits! </mat-error>
+                </mat-form-field> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <mat-form-field>
+                    <input matInput placeholder="Contact Person" required formControlName="contact_person">
+                </mat-form-field>
+                <mat-form-field fxLayout="row">
+                    <input matInput placeholder="Contact Person No" required formControlName="contact_person_no">
+                    <mat-error>must contain 10 digits! </mat-error>
+                </mat-form-field>
+                <mat-form-field fxLayout="column">
+                    <mat-icon matPrefix>place</mat-icon>
+                    <input matInput placeholder="Location" required formControlName="location"> 
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="GSTN" required formControlName="GSTN">
+                 </mat-form-field> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <mat-form-field>
+                    <input matInput placeholder="Credit Amount" required formControlName="credit_amount">
+                </mat-form-field>
+                <mat-form-field fxLayout="column">
+                    <input matInput placeholder="Credit Days" required formControlName="credit_days">
+                </mat-form-field>
+                <mat-form-field fxLayout="column">
+                    <input matInput placeholder="Comment" formControlName="comment">
+                </mat-form-field>
+        </form>
+        </div>
+        <div fxLayoutGap="5px" fxLayoutAlign=end center>
+            <button mat-raised-button color="primary" *ngIf= "flag" [disabled]=fgcustomer.invalid (click)="save()">Save</button>
+            <button mat-raised-button color="primary"*ngIf= "!flag"  (click)="update()">update</button>
+            <button mat-raised-button color="primary" (click)="cancel()">Close</button>
+        </div>
+    </mat-card>
+</div>

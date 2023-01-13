@@ -1,0 +1,215 @@
+<div class="container-head">
+  <mat-sidenav-container class="container">
+          <mat-sidenav #sidenav [(mode)]="over" [(opened)]="opened" class="bottom-to-top">
+            <div class="my-2" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+              <div class="with-bg"></div>
+              <div>
+                <!-- <a> -->
+                  <img src="../../../assets/images/application_square.png" style="margin: 2px; padding: 1px; object-fit: cover;">
+                <!-- </a> -->
+              </div>
+            </div>
+            <!-- <div class="mt-2 py-3 text-white" fxLayout="column" fxLayoutAlign="center center"
+              fxLayoutGap="7px">
+              <div>
+                <a>
+                  <span class="lead">Application Square</span>
+                </a>
+              </div>
+              <div>
+                <a>
+                  <span class="">Infotech</span>
+                </a>
+              </div>
+            </div> -->
+            <div class="mt-3">
+              <mat-nav-list>
+                <a routerLink="/dashboard" routerLinkActive="active" mat-list-item class="ml-2" style="font-size:15px;">
+                <mat-icon color="primary" matPrefix>tv</mat-icon>&nbsp;
+                Dashboard
+                </a>
+              </mat-nav-list>
+              <mat-accordion multi="true" [displayMode]="displayMode">
+                <mat-expansion-panel class="no-shadow">
+                  <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+                    <mat-panel-title>
+                      <mat-icon color="primary" matPrefix>folder</mat-icon>
+                      <a mat-button>Master</a>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <mat-nav-list class="ml-0" dense>
+                    <mat-list-item>
+                      <a routerLink="/dashboard/master/user" routerLinkActive="active">User</a>
+                      <!-- <button mat-icon-button class="mr-3">
+                      <mat-icon>info</mat-icon>
+                    </button> -->
+                    </mat-list-item>
+                    <mat-list-item>
+                      <a routerLink="/dashboard/master/role" routerLinkActive="active">Role</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <a routerLink="/dashboard/master/customer-type" routerLinkActive="active">Customer Type</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <a routerLink="/dashboard/master/insurance" routerLinkActive="active">Insurance</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <a routerLink="/dashboard/master/payment-mode" routerLinkActive="active">Payment Mode</a>
+                      </mat-list-item>
+                  </mat-nav-list>
+                </mat-expansion-panel>
+
+                <mat-nav-list>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <mat-icon color="warn" matPrefix >account_circle</mat-icon>
+                  <a mat-button routerLink="/dashboard/customer" routerLinkActive="active">Customer</a>
+                </mat-nav-list>
+                <mat-nav-list>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <mat-icon color="warn" matPrefix>credit_card</mat-icon>
+                  <a mat-button routerLink="/dashboard/credit" routerLinkActive="active">Credit</a>
+                </mat-nav-list>
+                <mat-nav-list>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <mat-icon color="warn" matPrefix>date_range</mat-icon>
+                  <a mat-button routerLink="/dashboard/follow-up" routerLinkActive="active">Follow Up</a>
+                </mat-nav-list>
+                
+                <mat-expansion-panel class="no-shadow my-0">
+                  <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+                    <mat-panel-title>
+                      <mat-icon matPrefix style="color: rgb(134, 248, 59);"> bar_chart</mat-icon>&nbsp;&nbsp; 
+                      Reports
+                    </mat-panel-title>                 
+                  </mat-expansion-panel-header>
+                  <mat-nav-list class="ml-0" dense>
+                    <mat-list-item>
+                      <a routerLink="/dashboard/reports/customer1" routerLinkActive="active">Customer</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <a routerLink="/dashboard/reports/service-advisor">Service Advisor</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <a routerLink="/dashboard/reports/manager1" routerLinkActive="active">Manager</a>  
+                    </mat-list-item>
+                    <mat-list-item>
+                      <a routerLink="/dashboard/reports/credit-expire">Credit Expire</a>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <a routerLink="/dashboard/reports/special-approval">Special Approval</a>
+                    </mat-list-item>
+                  </mat-nav-list>
+                </mat-expansion-panel>
+
+                <!-- <form [formGroup]="fgpending">
+                  <button mat-icon-button  routerLink="/dashboard/pending">Pending</button>
+                  <mat-form-field fxLayout="column">
+                    <mat-select required formControlName="days">
+                        <mat-option value="2">2 Days</mat-option>
+                        <mat-option value="3">3 Days</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                </form> -->
+                <mat-expansion-panel class="no-shadow my-0">
+                  <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+                    <mat-panel-title>
+                      <mat-icon color="warn" matPrefix>access_alarms</mat-icon>&nbsp;&nbsp;
+                      <button mat-icon-button routerLink="/dashboard/pending">Pending</button>
+                    </mat-panel-title>                  
+                  </mat-expansion-panel-header>
+                  <mat-nav-list class="ml-0" dense>
+                    <mat-list-item>
+                      <button mat-icon-button (click)="submit(2)">2 Days</button>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <button mat-icon-button (click)="submit(3)">3 Days</button>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <button mat-icon-button (click)="submit(7)">7 Days</button>  
+                    </mat-list-item>
+                    <mat-list-item>
+                      <button mat-icon-button (click)="submit(15)">15 Days</button>  
+                  </mat-list-item>
+                  <mat-list-item>
+                    <button mat-icon-button (click)="submit(30)">1 Month</button>  
+                  </mat-list-item>       
+                  </mat-nav-list>
+                </mat-expansion-panel>
+
+              </mat-accordion>         
+
+            <mat-nav-list>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <mat-icon matPrefix>subscriptions</mat-icon>
+              <a mat-button routerLink="/dashboard/credit-approval" routerLinkActive="active">Credit Approval</a>
+            </mat-nav-list>
+            <mat-nav-list>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <mat-icon style="color: skyblue;">business_center</mat-icon>
+              <a mat-button routerLink="/dashboard/accounts" routerLinkActive="active">Accounts</a>
+            </mat-nav-list>
+            <mat-nav-list>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <mat-icon color="primary" matPrefix >account_circle</mat-icon>
+              <a mat-button routerLink="/dashboard/manager" routerLinkActive="active">Manager</a>
+            </mat-nav-list>
+            <mat-nav-list>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <!-- <mat-icon color="accent" matPrefix>library_books</mat-icon> -->
+              <mat-icon color="accent">view_column</mat-icon>
+              <a mat-button routerLink="/dashboard/manager-dashboard" routerLinkActive="active">Manager Dashboard</a>
+            </mat-nav-list>
+            <mat-nav-list>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <mat-icon color="warn" matPrefix>power_settings_new</mat-icon>&nbsp;&nbsp;
+              <button mat-icon-button (click)="logout()">Logout</button>
+            </mat-nav-list>
+            </div>          
+          </mat-sidenav>
+<mat-sidenav-content class="container1">
+  <button mat-icon-button (click)="sidenav.toggle()" fxShow.sm="true" fxShow.gt-sm="false">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="example-spacer"></span>
+                <div class="search" fxLayoutAlign=end start>                
+                  <mat-icon class="example-icon" matPrefix>search </mat-icon>
+                  <input type="text" class="searchTerm" placeholder="Search">
+                </div>
+      <!-- <mat-toolbar>                          
+        <mat-toolbar-row >
+          <button mat-icon-button (click)="sidenav.toggle()" fxShow.sm="true" fxShow.gt-sm="false">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <div>
+            <button mat-raised-button routerLink="/dashboard">Dashboard</button>
+          </div>
+          <span class="example-spacer"></span>
+            <mat-icon class="example-icon">search</mat-icon>
+              <div class="wrap">
+                <div class="search">
+                  <input type="text" class="searchTerm" placeholder="Search Here">
+                </div>
+              </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div class="mat-example">
+        <div fxLayout="row wrap">
+          <mat-card class="example-card">                   
+            <h4>TOTAL RECOVERY DONE 702382</h4>
+          </mat-card>
+          <mat-card class="example-card">                   
+            <h4>TOTAL CREDIT GIVEN 1276779</h4>
+          </mat-card>
+          <mat-card class="example-card">                   
+            <h4>TOTAL BALANCE OUTSTANDING 574397</h4>        
+          </mat-card>
+        </div>                
+      </div>-->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+  <!-- <div class="conatiner">
+      <div fxLayoutAlign="center">
+          <mat-drawer-container class="example-container">
+              <mat-drawer mode="side" opened>
+              <mat-icon matPrefix>computer</mat-icon> 
+              <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>  
+          </mat-drawer>
+          <mat-drawer-content>Main content</mat-drawer-content>
+          </mat-drawer-container>
+      </div>
+  </div> -->

@@ -1,0 +1,67 @@
+<div class="container" fxLayoutAlign="center center">
+    <mat-card>
+        <div class="mat-example">
+            <div fxLayout="row wrap" fxLayoutGap="10px">
+              <mat-card class="example-card">
+                <div fxLayout="row">
+                <div>  
+                  <h3>Credit : {{data.row.credit_amount}}</h3>
+                </div>
+                  <div fxLayoutAlign="center center">  
+                    <mat-icon style="border-radius: 70px; padding : 10px; background-color: rgb(255, 17, 17); color: white;">account_balance</mat-icon>
+                  </div>
+                </div>
+              </mat-card>
+              <mat-card class="example-card">
+                <div fxLayout="row"> 
+                  <div>                   
+                    <h3>Pending : {{obj && obj[0]?.balance_amount}}</h3>
+                  </div>
+                  <div fxLayoutAlign="center center">
+                    <mat-icon style="padding: 10px; border-radius: 70px; background-color: rgb(255, 136, 0); color: white;">thumb_up</mat-icon>
+                  </div>
+                </div>
+              </mat-card>
+              <mat-card class="example-card">
+                <div fxLayout="row"> 
+                  <div>                  
+                    <h3>Balance : {{obj && obj[0]?.pay_amount}}</h3>
+                  </div>
+                  <div fxLayoutAlign="center center" class="img-example">  
+                    <!-- <mat-icon style="padding: 10px; border-radius: 70px; background-color: yellow; color: white;">account_balance_wallet</mat-icon> -->
+                    <img src="../../../assets/images/balance.png">
+                  </div>          
+                </div>
+              </mat-card>
+            </div>                
+          </div>
+          <br>
+      <div fxLayout="row">
+        <div>
+          <b fxLayoutAlign="center center"style="text-transform: uppercase;"><img src="../../../assets/images/user.png">{{data.row.c_name}}</b>
+          <p fxLayoutAlign="start center">{{data.row.c_type}}</p>
+          <p style="border-bottom: silver solid 1px;"></p>
+          <p><mat-icon matPreffix>stay_primary_portrait</mat-icon>{{data.row.contact_no}}</p>
+          <p><mat-icon matPrefix>place</mat-icon>{{data.row.location}}</p>
+        </div> &nbsp;&nbsp;
+        <p style="border-right : silver solid 1px;"></p>&nbsp;&nbsp;
+        <div fxLayout="column">
+          <div fxLayout="row">
+            <p><mat-icon matPrefix color="primary" >account_circle</mat-icon>{{data.row.contact_person}}</p> 
+            <p><mat-icon matPreffix color="primary">stay_primary_portrait</mat-icon>{{data.row.contact_person_no}}</p>  
+          </div>
+            <div fxLayout="row">
+              <p><mat-icon color="primary">local_atm</mat-icon>{{data.row.GSTN}}</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <p><mat-icon color="primary">credit_card</mat-icon>{{data.row.credit_amount}}</p>              
+            </div>
+            <div fxLayout="row wrap">
+              <p><mat-icon color="primary">card_giftcard</mat-icon>{{data.row.credit_days}}</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <p><mat-icon color="primary">directions_car</mat-icon>{{data.row.car_no}}</p>
+            </div>
+        </div>
+      </div>
+      <div fxLayoutAlign="end end">
+        <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
+      </div>
+    </mat-card>
+</div>

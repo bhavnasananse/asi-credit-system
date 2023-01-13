@@ -1,0 +1,41 @@
+<div fxLayoutAlign="center">
+    <mat-card>
+      <form class="example-form" [formGroup]="fgaddrole">
+        <div fxLayoutAlign="end center">
+          <button mat-icon-button (click)="cancel()">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
+        <mat-form-field fxLayout="column">
+          <input matInput placeholder="Role" formControlName="role">
+        </mat-form-field>  
+        
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+            <body ng-app="">
+            <p>My cars:</p>
+            <input type="checkbox" ng-model="all"> Check all<br><br>
+            <input type="checkbox" ng-checked="all">Volvo<br>
+            <input type="checkbox" ng-checked="all">Ford<br>
+            <input type="checkbox" ng-checked="all">Mercedes
+            <p>Click "Check all" to check all three cars.</p>
+            </body> -->
+
+                              
+        <div>
+          <mat-checkbox color="primary">Select All</mat-checkbox>
+          <mat-checkbox color="primary">Admin</mat-checkbox> 
+          <mat-checkbox color="primary">Service_Advisor</mat-checkbox><br> <br>
+          <mat-checkbox color="primary">Body&Paint</mat-checkbox>
+          <mat-checkbox color="primary">Account</mat-checkbox>
+          <mat-checkbox color="primary">EDP</mat-checkbox>
+          <mat-checkbox color="primary">Demo</mat-checkbox>
+        </div>
+      </form>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button color="primary"  *ngIf = "flag" (click)="save()" [disabled]="fgaddrole.invalid">Save</button>
+          <button mat-raised-button color="primary" *ngIf = "!flag" (click)="update()">Update</button>
+          <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
+      </div>
+  </mat-card>
+</div>    
+          

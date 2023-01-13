@@ -1,0 +1,35 @@
+.example-card {
+    z-index: 1;
+    margin-top: 100px;
+    /* width: 25%; */
+    border-radius: 10px;
+}  
+  .custom{
+    z-index: 2;
+  }
+  .header>p,h3{
+    color: white;
+    text-align: center;
+  } 
+  .header{
+    /* background:linear-gradient( #5e72e4 0, #825ee4); */
+    /* position: fixed; */
+    /* height: 50%; */
+    /* width: 100%; */
+    font-size: 20px;
+  }
+.footer{
+  background: linear-gradient(#0f091f 100%) !important;
+  /* background-color: whitesmoke; */
+  /* border:red solid 2px; */
+  /* max-height: 100%;*/
+}
+.footer>p{
+  color: white;
+}
+.container{
+  background: linear-gradient(176deg, #5e72e4 0 , #825ee4f6 50%,#0f091f calc(50% + 2px)); 
+  /* background-color:  whitesmoke; */
+  /* height: 50%; */
+}
+/* , #825ee4f6 #5e72e4 */

@@ -1,0 +1,37 @@
+<div class="container">
+    <mat-card>
+        <form [formGroup]="fgfollowup">
+            <div fxLayoutAlign="end center">
+                <button mat-icon-button (click)="cancel()">
+                  <mat-icon>clear</mat-icon>
+                </button>
+              </div>
+            <mat-form-field fxLayout="row">
+                <input matInput [matDatepicker]="picker" placeholder="Select date" formControlName="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field fxLayout="column">
+                <input matInput formControlName="time">
+                <mat-icon>alarm</mat-icon> {{getDatetime()| date: 'hh:MM:ss'}}
+            </mat-form-field>
+
+            <mat-form-field fxLayout="row">
+                <input matInput [matDatepicker]="pick" placeholder="Next Followup date" formControlName="next_date">
+                <mat-datepicker-toggle matSuffix [for]="pick"></mat-datepicker-toggle>
+                <mat-datepicker #pick></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field fxLayout="column">
+                <input matInput placeholder="Comment" formControlName="comment">
+            </mat-form-field>
+        </form>
+        <div fxLayoutGap="5px">
+            <button mat-raised-button color="primary" [disabled]="fgfollowup.invalid" (click)="save()">Save</button>
+            <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
+        </div>
+    </mat-card>
+</div>
+
+<!-- <b>{{getDatetime()}}</b> -->

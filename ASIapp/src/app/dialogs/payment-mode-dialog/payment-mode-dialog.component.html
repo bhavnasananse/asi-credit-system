@@ -1,0 +1,19 @@
+<div fxLayoutAlign="center">
+    <mat-card>
+        <form class="example-form" [formGroup]="fgpayment">
+            <div fxLayoutAlign="end center">
+                <button mat-icon-button (click)="cancel()">
+                  <mat-icon>clear</mat-icon>
+                </button>
+              </div>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Payment Mode Type" formControlName="mode_name">
+            </mat-form-field>
+        </form>
+        <div fxLayoutGap="5px">
+            <button mat-raised-button color="primary" *ngIf="flag" (click)="save()" [disabled]="fgpayment.invalid">Save</button>
+            <button mat-raised-button color="primary" *ngIf="!flag" (click)="update()">Update</button>
+            <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
+        </div>
+    </mat-card>
+</div>

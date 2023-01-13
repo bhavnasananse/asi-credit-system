@@ -1,0 +1,63 @@
+<div class="container" fxLayoutAlign="center center">
+    <mat-card class="example-card">
+        <form [formGroup]="fgadd">
+            <div fxLayoutAlign="end center">
+                <button mat-icon-button (click)="cancel()">
+                  <mat-icon>clear</mat-icon>
+                </button>
+              </div> 
+            <div class="example-container" fxLayout="column">
+                    <mat-form-field>
+                      <input matInput placeholder="FirstName" required formControlName="firstname">
+                    </mat-form-field>
+                  
+                    <mat-form-field>
+                      <input matInput placeholder="LastName" required formControlName="lastname">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select placeholder="Role Name List" required formControlName="r_id">
+                            <mat-option [value]="role.r_id" *ngFor ="let role of roles">{{role.role}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                  
+                <!-- <mat-form-field>
+                    <mat-select placeholder="Select Role" required formControlName="r_id">
+                        <mat-option>Select</mat-option>
+                        <mat-option value="1">Admin</mat-option>
+                        <mat-option value="3">Manager</mat-option>
+                        <mat-option value="4">Service-Advisor</mat-option>
+                        <mat-option value="5">Body & Paint</mat-option>
+                        <mat-option value="6">Account</mat-option>
+                        <mat-option value="7">EDP</mat-option>
+                        <mat-option value="8">Demo</mat-option>
+                    </mat-select>
+                </mat-form-field> -->
+                <mat-form-field>
+                    <input matInput placeholder="Credit" required formControlName="credit">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput required placeholder="Username" formControlName="username">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="password" placeholder="password" required formControlName="password">
+                    <mat-error>password should contain 6 chars!</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Confirm Password" required formControlName="cpassword">
+                </mat-form-field>
+                <div class="dangertext" *ngIf="fgadd.hasError('match')">
+                    <mat-error> password and confirm password must be same !</mat-error>
+                </div>
+
+            </div>            
+        </form>
+            <div fxLayoutGap="3px" fxLayoutAlign="end center">
+                <button mat-raised-button color="primary" *ngIf = "flag"(click)="save()" [disabled]="fgadd.invalid">save</button>
+                <button mat-raised-button color="primary"*ngIf = "!flag"(click)="update()">update</button>
+                <button mat-raised-button color="primary" (click)="cancel()">Close</button>               
+            </div>
+    </mat-card>        
+</div>
+
+

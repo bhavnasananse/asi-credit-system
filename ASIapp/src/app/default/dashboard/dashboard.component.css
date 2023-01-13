@@ -1,0 +1,83 @@
+  .mt-3 > button{
+    text-decoration-color: white;
+  }  
+  .spacer {
+    flex: 1 1 auto;
+  }  
+  .container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }  
+  mat-sidenav {
+    width: 260px;
+  }  
+  .circle {
+    border-radius: 50%;
+  }  
+  .with-bg {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    max-height: 130px;
+  }  
+  .no-shadow {
+    box-shadow: none !important;
+  }  
+  ::ng-deep .mat-expansion-panel-body {
+    padding: 0px !important;
+    padding-left: 10px !important;
+  }  
+  .header-box-shadow {
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  }  
+  .bottom-to-top {
+    border: 0px;
+    border-right: 1px;
+    border-style: solid;
+    border-image:
+    linear-gradient(to top, #c1c1c1, rgba(0, 0, 0, 0)) 1 100%
+  }  
+  
+.container1{
+  background-image: url("../../../assets/images/bg-1.png");
+  } 
+  .search {
+    /* width: 20%; */
+    /* position: relative; */
+    display: flex;
+  }
+  
+  .searchTerm {
+    /* width: 100%; */
+    margin-top: 4px;
+    align-items: flex-end;
+    border: whitesmoke 4px;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 15px;
+    outline: none;
+    /* color: #9DBFAF; */
+  }
+  .example-icon {
+    padding: 0 14px;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  .example-icon{
+    margin-top: 4px;
+    color: whitesmoke;
+  }
+
+  .container1>button{
+    color: white;
+  }
